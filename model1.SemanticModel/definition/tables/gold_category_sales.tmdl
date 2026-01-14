@@ -1,0 +1,31 @@
+table gold_category_sales
+	lineageTag: 9b51ed7d-c62d-4a62-ba14-a8c26ed2b0d4
+	sourceLineageTag: [dbo].[gold_category_sales]
+
+	column product_category
+		dataType: string
+		lineageTag: 37c12281-cb2c-4647-8a7f-6cca65abc5cd
+		sourceLineageTag: product_category
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_total_sales
+		dataType: double
+		lineageTag: d6b5e0d1-794f-4615-b870-d2ae2155dd3c
+		sourceLineageTag: category_total_sales
+		summarizeBy: sum
+		sourceColumn: category_total_sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_category_sales = entity
+		mode: directLake
+		source
+			entityName: gold_category_sales
+			schemaName: dbo
+			expressionSource: 'DirectLake - GoldLayer'
+

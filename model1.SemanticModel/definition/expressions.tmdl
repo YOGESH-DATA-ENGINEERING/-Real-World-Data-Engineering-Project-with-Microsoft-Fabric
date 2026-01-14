@@ -1,0 +1,11 @@
+expression 'DirectLake - GoldLayer' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/809a8f19-69af-4189-81cc-f336c733f267/0804c6dd-f0e2-4829-abd1-adab62581e0c", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: c9ce66ae-ec69-4857-9a32-d7177b327feb
+
+	annotation PBI_IncludeFutureArtifacts = False
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo_1].[silver_products]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo_1].[silver_customers]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo_1].[silver_orders]"}},"objectType":"Table"}]
+

@@ -1,0 +1,32 @@
+table gold_daily_sales
+	lineageTag: 9504f8c4-2680-43da-b5b0-904e35f592ea
+	sourceLineageTag: [dbo].[gold_daily_sales]
+
+	column transaction_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7a86304a-8a8d-4078-a530-83e8f44b1a91
+		sourceLineageTag: transaction_date
+		summarizeBy: none
+		sourceColumn: transaction_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column daily_total_sales
+		dataType: double
+		lineageTag: 4cce6950-9a3e-4819-81d7-1a65076f134c
+		sourceLineageTag: daily_total_sales
+		summarizeBy: sum
+		sourceColumn: daily_total_sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_daily_sales = entity
+		mode: directLake
+		source
+			entityName: gold_daily_sales
+			schemaName: dbo
+			expressionSource: 'DirectLake - GoldLayer'
+
